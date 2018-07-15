@@ -1,5 +1,5 @@
-import * as React from 'react';
 import * as enzyme from 'enzyme';
+import * as React from 'react';
 import Hello from './Hello';
 
 it('renders when no enthusiasm level is given', () => {
@@ -16,4 +16,4 @@ it('throws when enthusiasm is negative', () => {
   expect(() => {
     enzyme.shallow(<Hello name='Daniel' enthusiasmLevel={-1} />);
   }).toThrow();
-})
+});
