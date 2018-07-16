@@ -26,3 +26,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.panel {
+  border: solid 1px;
+  padding: 0.5em;
+  width: 50%;
+  margin: auto;
+  background-color: aquamarine;
+}
