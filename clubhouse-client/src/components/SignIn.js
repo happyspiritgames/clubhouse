@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Login extends Component {
+class SignIn extends Component {
   render() {
     const signinCodeUri = 'https://happyspiritgames.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=3jgcupa4o95gcq98qmimb2qqt7&redirect_uri=http://localhost:3000/signin'
     const signinTokenUri = 'https://happyspiritgames.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=3jgcupa4o95gcq98qmimb2qqt7&redirect_uri=http://localhost:3000/signin'
@@ -12,4 +12,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default SignIn

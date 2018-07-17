@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-export interface MemberHomePageProps { compiler: string; framework: string; }
+export interface IMemberHomePageProps { compiler: string; framework: string; }
 
-export const MemberHomePage = (props: MemberHomePageProps) => (
+export const MemberHomePage = (props: IMemberHomePageProps) => (
   <div>
     <h1>Member Home Page</h1>
     <p>
