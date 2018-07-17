@@ -1,7 +1,7 @@
 import * as React from 'react';
 import '../App.css';
 
-class AccessPanel extends React.Component {
+class SignInPanel extends React.Component {
   render() {
     const cognitoEndpoint = 'https://happyspiritgames.auth.us-west-2.amazoncognito.com'
     const responseType = 'token'
@@ -10,11 +10,11 @@ class AccessPanel extends React.Component {
     const signInUrl = `${cognitoEndpoint}/login?response_type=${responseType}&client_id=${clientId}&redirect_uri=${redirectUrl}`
     return (
       <div className="panel" id="memberAccessPanel">
-        <h1>Member Access</h1>
-          <a href={signInUrl}>Click Here to Sign In</a>
+        <h2>Free Member Access</h2>
+        <a href={signInUrl}>Sign Up. Sign In.</a>
       </div>
     );
   }
 }
 
-export default AccessPanel;
+export default SignInPanel;

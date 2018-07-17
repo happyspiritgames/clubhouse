@@ -1,22 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
-import LoginPanel from './components/LoginPanel'
+import AnonymousHomePage from './components/AnonymousHomePage';
+import Header from './components/Header';
+import JoinPage from './components/JoinPage';
+import MemberHomePage from './components/MemberHomePage';
+import SignInCallback from './components/SignInCallback';
+import PrivateRoute from './security/PrivateRoute';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <div className="App-intro">
-          <LoginPanel />
-        </div>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="App">
+    <Header />
+    <main>
+      <Switch>
+        <PrivateRoute path='/member' component={MemberHomePage} />
+        <Route path='/join' component={JoinPage} />
+        <Route path='/signin' component={SignInCallback} />
+        <Route component={AnonymousHomePage} />
+      </Switch>
+    </main>
+  </div>
+);
+
+// add a route to a join page for anyone who tried to go to a protected area
 
 export default App;
