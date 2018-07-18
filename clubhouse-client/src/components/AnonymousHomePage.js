@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import '../App.css';
-import SignInPanel from './SignInPanel'
+import { Jumbotron } from 'reactstrap';
 
 class AnonymousHomePage extends Component {
   render() {
     return (
-      <div>
-        <h1>Who Are You?</h1>
+      <Jumbotron>
+        <h1 className="text-center">Welcome!!!</h1>
         <p>You can play a game.</p>
-        <p>Beyond that, you will need to sign in.</p>
-        <SignInPanel />
-      </div>
+        <p>To get to the good stuff, you will need to sign in.</p>
+      </Jumbotron>
     );
   }
 }

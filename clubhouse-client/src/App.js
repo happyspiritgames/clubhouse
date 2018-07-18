@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import './App.css';
 import AnonymousHomePage from './components/AnonymousHomePage';
 import Header from './components/Header';
 import JoinPage from './components/JoinPage';
@@ -9,7 +8,7 @@ import SignInCallback from './components/SignInCallback';
 import PrivateRoute from './security/PrivateRoute';
 
 const App = () => (
-  <div className="App">
+  <div className="container-fluid">
     <Header />
     <main>
       <Switch>

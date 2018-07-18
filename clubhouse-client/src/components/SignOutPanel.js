@@ -1,33 +1,34 @@
 import * as React from 'react';
 import { withRouter } from 'react-router-dom';
-import '../App.css';
 import fakeAuth from '../security/fakeAuth';
+import { Card, CardText, CardBody, CardTitle, Button } from 'reactstrap';
 
 const AuthButton = withRouter(
   ({ history }) =>
     fakeAuth.isAuthenticated ? (
       <p>
-        Welcome!{" "}
-        <button
+        <Button
           onClick={() => {
             fakeAuth.signout(() => history.push("/"));
           }}
         >
           Sign out
-        </button>
+        </Button>
       </p>
     ) : (
-      <p>You are not logged in.</p>
+      <CardText>You are not logged in.</CardText>
     )
 );
 
 class SignOutPanel extends React.Component {
   render() {
     return (
-      <div className="panel" id="memberAccessPanel">
-        <h2>Sign Out</h2>
-        <AuthButton />
-      </div>
+      <Card>
+        <CardBody>
+          <CardTitle>Leaving so soon?</CardTitle>
+          <AuthButton />
+        </CardBody>
+      </Card>
     );
   }
 }
