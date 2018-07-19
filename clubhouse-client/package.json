@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "ajv": "^6.5.2",
-    "aws-amplify": "^0.4.8",
-    "aws-amplify-react": "^1.0.0",
+    "aws-amplify": "^1.0.1",
+    "aws-amplify-react": "^1.0.1",
     "bootstrap": "^4.1.2",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.3",
