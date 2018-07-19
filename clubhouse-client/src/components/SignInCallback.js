@@ -22,7 +22,7 @@ export default class SigninCallback extends React.Component {
     return (
       <Redirect
         to={{
-          pathname: "/member",
+          pathname: "/design-a-game",
           state: { from: this.props.location }
         }}
       />

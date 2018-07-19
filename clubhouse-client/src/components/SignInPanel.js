@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Card, CardText, CardBody, CardTitle, Button } from 'reactstrap';
-import { Redirect } from 'react-router-dom';
 
 class SignInPanel extends React.Component {
   state = {

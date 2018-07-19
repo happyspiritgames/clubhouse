@@ -9,10 +9,7 @@ class Header extends Component {
           <NavbarBrand href="/">Happy Spirit Games</NavbarBrand>
           <Nav pills>
             <NavItem>
-              <NavLink href='/join'>Join</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href='/member'>Members Only</NavLink>
+              <NavLink href='/design-a-game'>Design a Game</NavLink>
             </NavItem>
           </Nav>
         </Navbar>
