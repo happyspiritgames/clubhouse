@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { Container } from 'reactstrap';
 import Header from './components/Header';
 import DesignAGamePage from './components/DesignAGamePage';
 import JoinPage from './components/JoinPage';
@@ -8,7 +9,7 @@ import SignInCallback from './components/SignInCallback';
 import WelcomePage from './components/WelcomePage';
 
 const App = () => (
-  <div className="container-fluid">
+  <Container>
     <Header />
     <main>
       <Switch>
@@ -18,7 +19,7 @@ const App = () => (
         <Route component={WelcomePage} />
       </Switch>
     </main>
-  </div>
+  </Container>
 );
 
 export default App;

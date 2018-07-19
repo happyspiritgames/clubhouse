@@ -1,9 +1,17 @@
 import React from 'react'
-import { Route } from 'react-router-dom';
-import { withAuthenticator } from 'aws-amplify-react'
+import { Route, Redirect } from 'react-router-dom'
+import { Auth } from 'aws-amplify'
 
-const PrivateRoute = (props) => (
-  <Route {...props} />
-);
+const isAuthenticated = () => Auth.user !== null
 
-export default withAuthenticator(PrivateRoute);
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => (
+    isAuthenticated() === true
+      ? <Component {...props} />
+      : <Redirect to='/join' />
+  )} />
+)
+
+export default PrivateRoute

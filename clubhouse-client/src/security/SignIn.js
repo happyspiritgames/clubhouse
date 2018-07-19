@@ -1,106 +1,65 @@
 import React from 'react';
 import { Auth } from 'aws-amplify';
-import DynamicImage from '../components/DynamicImage';
 import { withRouter } from 'react-router-dom';
+import { Card, CardText, CardBody, CardTitle, Button, Form, FormGroup, Input } from 'reactstrap'
 
-import '../css/app.css';
-
-/**
- * Sign-in Page
- */
 class SignIn extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      stage: 0,
-      email: '',
-      password: '',
-      code: '',
-      userObject: null
-    };
+
+  state = {
+    email: '',
+    password: '',
+    userObject: null
   }
 
-  onEmailChanged(e) {
-    this.setState({ email: e.target.value.toLowerCase() });
+  handleChange(e) {
+    const name = e.target.name
+    const value = e.target.value
+    this.setState({
+      [name]: value
+    })
+    console.log(this.state)
   }
 
-  onPasswordChanged(e) {
-    this.setState({ password: e.target.value });
-  }
-
-  onCodeChanged(e) {
-    this.setState({ code: e.target.value });
-  }
-
-  onSubmitForm(e) {
+  handleSubmit(e) {
     e.preventDefault();
-    console.log('Form Submitted');
-    this.setState({ stage: 1 });
-  }
-
-  onSubmitVerification(e) {
-    e.preventDefault();
-    console.log('Verification Submitted');
-    this.setState({ stage: 0, email: '', password: '', code: '' });
-    // Go back home
-    this.props.history.replace('/');
-  }
-
-  isValidEmail(email) {
-    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  }
-
-  renderSignIn() {
-    const isValidEmail = this.isValidEmail(this.state.email);
-    const isValidPassword = this.state.password.length > 6;
-
-    return (
-      <div className="app">
-        <header>
-          <DynamicImage src="logo.png"/>
-        </header>
-        <section className="form-wrap">
-          <h1>Sign in</h1>
-          <form id="registrationForm" onSubmit={(e) => this.onSubmitForm(e)}>
-            <input className={isValidEmail?'valid':'invalid'} type="email" placeholder="Email" value={this.state.email} onChange={(e) => this.onEmailChanged(e)}/>
-            <input className={isValidPassword?'valid':'invalid'} type="password" placeholder="Password" value={this.state.password} onChange={(e) => this.onPasswordChanged(e)}/>
-            <input disabled={!(isValidEmail && isValidPassword)} type="submit" value="Let's Ryde"/>
-          </form>
-        </section>
-      </div>
-    );
-  }
-
-  renderConfirm() {
-    const isValidEmail = this.isValidEmail(this.state.email);
-    const isValidCode = this.state.code.length === 6;
-
-    return (
-      <div className="app">
-        <header>
-          <DynamicImage src="logo.png"/>
-        </header>
-        <section className="form-wrap">
-          <h1>Enter MFA Code</h1>
-          <form id="verifyForm" onSubmit={(e) => this.onSubmitVerification(e)}>
-            <input className={isValidEmail?'valid':'invalid'} type="email" placeholder="Email" value={this.state.email}/>
-            <input className={isValidCode?'valid':'invalid'} type="text" placeholder="Verification Code" value={this.state.code} onChange={(e) => this.onCodeChanged(e)}/>
-            <input disabled={!(isValidCode&&isValidEmail)} type="submit" value="Verify"/>
-          </form>
-        </section>
-      </div>
-    );
+    Auth.signIn({ username: this.state.email, password: this.state.password })
+      .then((success) => {
+        console.log('signed in', success)
+        this.props.history.push('/design-a-game')
+      })
+      .catch((err) => {
+        console.log('sign-in error', err)
+      })
   }
 
   render() {
-    switch (this.state.stage) {
-      case 0:
-      default:
-        return this.renderSignIn();
-      case 1:
-        return this.renderConfirm();
-    }
+    return (
+      <div>
+        <Card>
+          <CardBody>
+            <CardTitle>Sign In</CardTitle>
+            <CardText>You have to sign in to access the course.</CardText>
+            <Form id="registrationForm" onSubmit={(e) => this.handleSubmit(e)}>
+              <Input 
+                id="email" 
+                type="email" 
+                placeholder="Email" 
+                value={this.state.email}
+                onChange={(e) => this.handleChange(e)}
+              />
+              <Input 
+                id="password" 
+                type="password" 
+                placeholder="Password" 
+                value={this.state.password} 
+                onChange={(e) => this.handleChange(e)}
+              />
+              <Input type="submit" value="Sign In"/>
+            </Form>
+          </CardBody>
+        </Card>
+      </div>
+    )
   }
 }
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Jumbotron } from 'reactstrap'
-import SignInPanel from './SignInPanel'
 
 class WelcomePage extends Component {
   render() {
@@ -9,7 +8,6 @@ class WelcomePage extends Component {
       <div>
         <Jumbotron>
           <h1 className="text-center">Design a Game</h1>
-          <SignInPanel />
         </Jumbotron>
 
         <h2 className="textalign-center">The <em><strong>Design a Game</strong></em> course shows you how with easy-to-follow guidance for beginners.</h2>
