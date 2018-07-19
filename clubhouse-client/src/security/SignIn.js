@@ -1,28 +1,26 @@
 import React from 'react';
 import { Auth } from 'aws-amplify';
 import { withRouter } from 'react-router-dom';
-import { Card, CardText, CardBody, CardTitle, Button, Form, FormGroup, Input } from 'reactstrap'
+import { Card, CardText, CardBody, CardTitle, Form, Input } from 'reactstrap'
 
 class SignIn extends React.Component {
 
   state = {
     email: '',
-    password: '',
-    userObject: null
+    password: ''
   }
 
   handleChange(e) {
-    const name = e.target.name
+    const name = e.target.id
     const value = e.target.value
     this.setState({
       [name]: value
     })
-    console.log(this.state)
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    Auth.signIn({ username: this.state.email, password: this.state.password })
+    Auth.signIn(this.state.email, this.state.password)
       .then((success) => {
         console.log('signed in', success)
         this.props.history.push('/design-a-game')
@@ -39,7 +37,7 @@ class SignIn extends React.Component {
           <CardBody>
             <CardTitle>Sign In</CardTitle>
             <CardText>You have to sign in to access the course.</CardText>
-            <Form id="registrationForm" onSubmit={(e) => this.handleSubmit(e)}>
+            <Form id="signInForm" onSubmit={(e) => this.handleSubmit(e)}>
               <Input 
                 id="email" 
                 type="email" 
