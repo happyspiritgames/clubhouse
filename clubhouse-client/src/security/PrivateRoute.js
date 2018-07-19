@@ -1,23 +1,9 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom';
-import fakeAuth from './fakeAuth';
+import { Route } from 'react-router-dom';
+import { withAuthenticator } from 'aws-amplify-react'
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      fakeAuth.isAuthenticated ? (
-        <Component {...props} />
-      ) : (
-        <Redirect
-          to={{
-            pathname: "/join",
-            state: { from: props.location }
-          }}
-        />
-      )
-    }
-  />
+const PrivateRoute = (props) => (
+  <Route {...props} />
 );
 
-export default PrivateRoute;
+export default withAuthenticator(PrivateRoute);
