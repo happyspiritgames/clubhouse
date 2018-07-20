@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import SignInPanel from './SignInPanel'
-import '../App.css';
+import SignIn from '../security/SignIn'
+import SignUp from '../security/SignUp'
+import { Jumbotron } from 'reactstrap';
 
 class AnonymousHomePage extends Component {
   render() {
     return (
       <div>
-        <h1>Join the Club</h1>
-        <p>It's free. Anyone can join.</p>
-        <p>(Make sure you have permission if you are under 13.)</p>
-        <SignInPanel />
+      <Jumbotron>
+        <h1 className="text-center">Join the Club</h1>
+      </Jumbotron>
+      <SignIn />
+      <SignUp />
       </div>
     );
   }

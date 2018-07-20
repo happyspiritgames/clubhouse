@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import '../App.css';
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 class Header extends Component {
   render() {
     return (
-      <header className="App-header">
-        <h1 className="App-title">Welcome to the Happy Spirit Games Clubhouse!</h1>
-        <nav>
-          <ul>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/join'>Join</Link></li>
-            <li><Link to='/member'>Members Only</Link></li>
-          </ul>
-        </nav>
+      <header>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">Happy Spirit Games</NavbarBrand>
+          <Nav pills>
+            <NavItem>
+              <NavLink href='/design-a-game'>Design a Game</NavLink>
+            </NavItem>
+          </Nav>
+        </Navbar>
       </header>
     );
   }
